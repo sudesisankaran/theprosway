@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Style & Design | The Pros Way</title>
+    <link rel="icon" href="../images/Asset 39@4x.png" type="image/png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="../css/layout.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+        :root {
+            --primary-yellow: #ffeb3b;
+            --dark-bg: #1a1a1a;
+            --text-white: #ffffff;
+            --accent-gray: #333333;
+        }
+        
+        body {
+            background-color: #fcfcfc;
+        }
+
+        
+        .product-card {
+            background: #fff !important;
+            border: 1px solid #eee !important;
+            border-radius: 8px !important;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px) !important;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+            border-color: var(--primary-yellow) !important;
+        }
+        
+        .product-image {
+            position: relative;
+            overflow: hidden;
+            background: #f9f9f9;
+        }
+        
+        .product-image img {
+            transition: transform 0.6s ease !important;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+        
+        .product-title {
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            height: 40px !important;
+            margin: 10px 0 5px !important;
+            color: #222;
+        }
+        
+        .product-author {
+            color: #777 !important;
+            font-size: 12px !important;
+            margin-bottom: 12px !important;
+        }
+        
+        .discounted-price {
+            font-size: 18px !important;
+            font-weight: 800 !important;
+            color: #000 !important;
+        }
+        
+        .add-to-bag-btn {
+            background: #000 !important;
+            color: #fff !important;
+            border-radius: 4px !important;
+            font-weight: 600 !important;
+            letter-spacing: 1px;
+            transition: all 0.3s ease !important;
+        }
+        
+        .add-to-bag-btn:hover {
+            background: var(--primary-yellow) !important;
+            color: #000 !important;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-yellow);
+        }
+    </style>
+</head>
+
+
+<body id="top">
+    
+    <!-- Top Announcement Bar -->
+    
+    <div class="announcement-bar">
+        <div class="announcement-slider">
+            <span class="active">Extra 10% Off on Shopping above ₹1,499.</span>
+            <span>Free Delivery on all prepaid orders!</span>
+            <span>Buy 2 Get 1 Free on all Kids' Books.</span>
+            <span>New Reports Collection is now Live!</span>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+        <header class="main-header">
+        <div class="container">
+            <div class="mobile-menu-toggle" onclick="toggleMobileNav()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="header-logo-container">
+                <a href="../index.html"><img src="../images/Asset 36@4x.png" alt="The Pros Way" style="height: 60px;"></a>
+            </div>
+            
+            <nav class="inline-nav">
+                <ul class="inline-menu-list">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn" onclick="toggleCategories(event)">Categories <i class="fa fa-angle-down" style="margin-left: 5px; font-size: 12px;"></i></a>
+                        <div id="categoriesDropdown" class="dropdown-content">
+                            <a href="upskill.html">Upskill</a>
+                            <a href="wealth.html">Wealth</a>
+                            <a href="creativity.html">Style & Design</a>
+                            <a href="kids.html">Kids</a>
+                            <a href="reports.html">Reports</a>
+                        </div>
+                    </li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="whylearnfromus.html">Why Us?</a></li>
+                    <li><a href="authors.html">Authors</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <script src="../js/navbar.js"></script>
+
+            <form class="header-search" onsubmit="event.preventDefault(); performSearch();">
+                <input type="text" id="searchInput" placeholder="Search For ISBN, Book Name, Author">
+                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+            </form>
+            
+            <div class="header-icons">
+                <a href="login.html" title="Login"><i class="fa fa-user-o"></i></a>
+                
+                <a href="bookshelf.html" title="Bookshelf"><i class="fa fa-bookmark-o"></i></a>
+                
+                <a href="cart.html" class="cart-icon-container">
+                    <i class="fa fa-shopping-bag"></i>
+                    <span class="cart-count">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <button onclick="history.back()" class="back-btn"><i class="fa fa-arrow-left"></i> Back</button>
+    </div>
+
+    
+
+    
+    <main class="container" style="background: linear-gradient(180deg, #fff 0%, #f9f9f9 100%); padding-top: 20px; border-radius: 20px; margin-top: 20px;">
+        <h2 class="section-title" style="text-align: left; margin: 40px 0;">Style & Design</h2>
+        <div class="books-dynamic-container category-grid" data-category="creativity">
+            <!-- Books will be rendered here dynamically -->
+        </div>
+    </main>
+
+    <script src="../js/books.js"></script>
+    <script src="../js/render-books.js"></script>
+    <!-- Exact Crossword Footer -->
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-info">
+                    <img src="../images/Asset 36@4x.png" alt="The Pros Way" style="height: 40px; margin-bottom: 20px;">
+                    <p>The Pros Way draws book lovers of all ages into a community where they can discover, share, and expand their knowledge through reading.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="upskill.html">Upskill</a></li>
+                        <li><a href="wealth.html">Wealth</a></li>
+                        <li><a href="creativity.html">Style & Design</a></li>
+                        <li><a href="kids.html">Kids</a></li>
+                        <li><a href="reports.html">Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="whylearnfromus.html">Why Us?</a></li>
+                        <li><a href="authors.html">Authors</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Store & Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                        <li><a href="cart.html">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="popular-searches">
+                <h4>Popular Searches</h4>
+                <div class="search-tags">
+                    <a href="upskill.html">Upskill Your Career</a>
+                    <a href="wealth.html">Wealth Building</a>
+                    <a href="creativity.html">Design Masterclass</a>
+                    <a href="kids.html">Kids' Stories</a>
+                    <a href="reports.html">Market Reports 2026</a>
+                    <a href="soon.html">Upcoming Releases</a>
+                    <a href="wealth.html">Passive Income</a>
+                    <a href="upskill.html">Leadership Skills</a>
+                    <a href="creativity.html">Creative Thinking</a>
+                    <a href="bestsellers.html">Best Sellers</a>
+</div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 The Pros Way, All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+        
+<script src="../js/cart-logic.js"></script>
+
+
+<script>
+    function startAnnouncementSlider() {
+        const slides = document.querySelectorAll('.announcement-slider span');
+        let current = 0;
+        if (slides.length === 0) return;
+        
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 4000);
+    }
+    document.addEventListener('DOMContentLoaded', startAnnouncementSlider);
+</script>
+<script src="../js/bookshelf-logic.js"></script>
+</body>
+
+</html>

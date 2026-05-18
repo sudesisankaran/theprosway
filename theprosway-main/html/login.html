@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Login | Crossword Clone</title>
+    <link rel="icon" href="../images/Asset 39@4x.png" type="image/png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="../css/layout.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+        .auth-container {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+            background: var(--bg-light);
+        }
+
+        .auth-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border-color);
+        }
+
+        .auth-card h1 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            outline: none;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .form-group input:focus {
+            border-color: #000;
+        }
+
+        .auth-footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .auth-footer a {
+            color: #000;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body id="top">
+    <!-- Top Announcement Bar -->
+    
+    <div class="announcement-bar">
+        <div class="announcement-slider">
+            <span class="active">Extra 10% Off on Shopping above ₹1,499.</span>
+            <span>Free Delivery on all prepaid orders!</span>
+            <span>Buy 2 Get 1 Free on all Kids' Books.</span>
+            <span>New Reports Collection is now Live!</span>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+        <header class="main-header">
+        <div class="container">
+            <div class="mobile-menu-toggle" onclick="toggleMobileNav()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="header-logo-container">
+                <a href="../index.html"><img src="../images/Asset 36@4x.png" alt="The Pros Way" style="height: 60px;"></a>
+            </div>
+            
+            <nav class="inline-nav">
+                <ul class="inline-menu-list">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn" onclick="toggleCategories(event)">Categories <i class="fa fa-angle-down" style="margin-left: 5px; font-size: 12px;"></i></a>
+                        <div id="categoriesDropdown" class="dropdown-content">
+                            <a href="upskill.html">Upskill</a>
+                            <a href="wealth.html">Wealth</a>
+                            <a href="creativity.html">Style & Design</a>
+                            <a href="kids.html">Kids</a>
+                            <a href="reports.html">Reports</a>
+                        </div>
+                    </li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="whylearnfromus.html">Why Us?</a></li>
+                    <li><a href="authors.html">Authors</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <script src="../js/navbar.js"></script>
+
+            <form class="header-search" onsubmit="event.preventDefault(); performSearch();">
+                <input type="text" id="searchInput" placeholder="Search For ISBN, Book Name, Author">
+                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+            </form>
+            
+            <div class="header-icons">
+                <a href="login.html" title="Login"><i class="fa fa-user-o"></i></a>
+                
+                <a href="#" title="Bookshelf"><i class="fa fa-bookmark-o"></i></a>
+                
+                <a href="cart.html" class="cart-icon-container">
+                    <i class="fa fa-shopping-bag"></i>
+                    <span class="cart-count">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <button onclick="history.back()" class="back-btn"><i class="fa fa-arrow-left"></i> Back</button>
+    </div>
+
+    <main class="auth-container">
+        <div class="auth-card">
+            <h1>Login</h1>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 30px; font-size: 14px;">Please sign in to your account to continue your purchase.</p>
+            
+            <button id="google-login-btn" class="btn-primary" onclick="handleGoogleLogin()" style="width: 100%; padding: 16px; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 12px; background: #fff; color: #000; border: 1px solid var(--border-color); font-weight: 700; transition: var(--transition);">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" style="width: 20px;">
+                SIGN IN WITH GOOGLE
+            </button>
+
+            <div class="auth-footer" style="margin-top: 30px;">
+                <p style="color: var(--text-gray); font-size: 13px;">By signing in, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            </div>
+        </div>
+    </main>
+
+    
+
+    <!-- Exact Crossword Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-info">
+                    <img src="../images/Asset 36@4x.png" alt="The Pros Way" style="height: 40px; margin-bottom: 20px;">
+                    <p>The Pros Way draws book lovers of all ages into a community where they can discover, share, and expand their knowledge through reading.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="upskill.html">Upskill</a></li>
+                        <li><a href="wealth.html">Wealth</a></li>
+                        <li><a href="creativity.html">Style & Design</a></li>
+                        <li><a href="kids.html">Kids</a></li>
+                        <li><a href="reports.html">Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="whylearnfromus.html">Why Us?</a></li>
+                        <li><a href="authors.html">Authors</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Store & Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                        <li><a href="cart.html">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="popular-searches">
+                <h4>Popular Searches</h4>
+                <div class="search-tags">
+                    <a href="upskill.html">Upskill Your Career</a>
+                    <a href="wealth.html">Wealth Building</a>
+                    <a href="creativity.html">Design Masterclass</a>
+                    <a href="kids.html">Kids' Stories</a>
+                    <a href="reports.html">Market Reports 2026</a>
+                    <a href="soon.html">Upcoming Releases</a>
+                    <a href="wealth.html">Passive Income</a>
+                    <a href="upskill.html">Leadership Skills</a>
+                    <a href="creativity.html">Creative Thinking</a>
+                    <a href="bestsellers.html">Best Sellers</a>
+</div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 The Pros Way, All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+        
+<script src="../js/cart-logic.js"></script>
+<!-- Firebase SDKs (Modular v10) -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    // YOUR FIREBASE CONFIGURATION
+ const firebaseConfig = {
+  apiKey: "AIzaSyBVnIRBZNiEFcKze-tWeOIiTMygEu9gNZI",
+  authDomain: "theprosway-6b053.firebaseapp.com",
+  projectId: "theprosway-6b053",
+  storageBucket: "theprosway-6b053.firebasestorage.app",
+  messagingSenderId: "205190787931",
+  appId: "1:205190787931:web:94d0d43b2f7c8f59d7607e",
+  measurementId: "G-V4X5LB2GEN"
+};
+
+    // Initialize Firebase
+    let app, auth, provider;
+    try {
+        app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        provider = new GoogleAuthProvider();
+        console.log("Firebase initialized successfully.");
+    } catch (e) {
+        console.error("Firebase Initialization Error:", e);
+    }
+
+    // Monitor Auth State
+    if (auth) {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log("User is already logged in:", user.displayName);
+                // Optional: Auto-redirect if already logged in
+                // window.location.href = 'payment.html';
+            }
+        });
+    }
+
+    let isLoggingIn = false;
+
+    // Global function for the button
+    window.handleGoogleLogin = async function() {
+        if (isLoggingIn) return;
+        
+        const btn = document.getElementById('google-login-btn');
+        if (!btn) return;
+        
+        const originalContent = btn.innerHTML;
+        
+        // Protocol check
+        if (window.location.protocol === 'file:') {
+            alert("Firebase Auth does not work via 'file://' protocol. \n\nPlease run this project using a local server (like Live Server in VS Code) or host it on Netlify/GitHub Pages.");
+            // Allow demo bypass for file protocol users
+            if (confirm("Would you like to proceed with a Demo Login instead?")) {
+                window.location.href = 'payment.html';
+            }
+            return;
+        }
+
+        try {
+            isLoggingIn = true;
+            btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> SIGNING IN...';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+
+            console.log("Initiating Google Login...");
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            
+            console.log("Login Success:", user);
+            alert(`Welcome ${user.displayName}! Login Successful.`);
+            window.location.href = 'payment.html';
+        } catch (error) {
+            console.error("Login Error:", error.code, error.message);
+            
+            // Reset button state
+            btn.innerHTML = originalContent;
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+            isLoggingIn = false;
+
+            if (error.code === 'auth/popup-closed-by-user') {
+                // User closed the popup
+            } else if (error.code === 'auth/cancelled-popup-request') {
+                alert("Login request was cancelled. Please wait a moment and try clicking only once.");
+            } else if (error.code === 'auth/unauthorized-domain') {
+                alert("Error: This domain is not authorized in your Firebase Console.\n\n1. Go to Firebase Console\n2. Auth > Settings > Authorized Domains\n3. Add '" + window.location.hostname + "'");
+            } else if (error.code === 'auth/operation-not-allowed') {
+                alert("Error: Google Sign-in is not enabled in your Firebase Console.\n\n1. Go to Firebase Console\n2. Auth > Sign-in method\n3. Enable Google Provider");
+            } else if (error.code === 'auth/network-request-failed') {
+                alert("Network error. Please check your internet connection.");
+            } else {
+                alert("Login failed: " + error.message + " (" + error.code + ")");
+                
+                // Demo fallback if project isn't fully set up
+                if (confirm("Login failed. Do you want to use Demo Login to continue testing?")) {
+                    window.location.href = 'payment.html';
+                }
+            }
+        } finally {
+            isLoggingIn = false;
+        }
+    };
+</script>
+
+<script>
+    function startAnnouncementSlider() {
+        const slides = document.querySelectorAll('.announcement-slider span');
+        let current = 0;
+        if (slides.length === 0) return;
+        
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 4000);
+    }
+    document.addEventListener('DOMContentLoaded', startAnnouncementSlider);
+</script>
+</body>
+
+</html>

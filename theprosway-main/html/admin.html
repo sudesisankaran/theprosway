@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | The Pros Way Bookstore</title>
+    <link rel="icon" href="../images/Asset 39@4x.png" type="image/png">
+    <link href="../css/layout.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        :root {
+            --admin-bg: #f4f4f4;
+            --admin-card: #ffffff;
+            --admin-accent: #ffcc00;
+        }
+
+        body {
+            background-color: var(--admin-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: #000;
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+        }
+
+        .admin-card {
+            background: var(--admin-card);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            margin-top: 0;
+            border-bottom: 2px solid var(--admin-accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--admin-accent);
+            color: #000;
+        }
+
+        .btn-export {
+            background: #28a745;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .book-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .book-list th, .book-list td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .book-list th {
+            background: #f9f9f9;
+        }
+
+        .book-preview-img {
+            width: 50px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .delete-btn {
+            color: #dc3545;
+            cursor: pointer;
+        }
+
+        .code-output {
+            background: #222;
+            color: #0f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .badge-upskill { background: #e3f2fd; color: #1976d2; }
+        .badge-wealth { background: #e8f5e9; color: #2e7d32; }
+        .badge-creativity { background: #fff3e0; color: #e65100; }
+        .badge-kids { background: #f3e5f5; color: #7b1fa2; }
+        .badge-reports { background: #ffebee; color: #c62828; }
+
+        .upload-section {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 10px;
+            background: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fa fa-dashboard"></i> Book Management System</h1>
+            <a href="../index.html" class="btn-primary" style="background: var(--admin-accent); color: #000;">VIEW SITE</a>
+        </div>
+
+        <div class="admin-card">
+            <h2>Add New Book / Change PDF</h2>
+            <form id="bookForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Book ID (Unique)</label>
+                        <input type="number" id="bookIdInput" required placeholder="e.g. 29">
+                    </div>
+                    <div class="form-group">
+                        <label>Book Title</label>
+                        <input type="text" id="title" required placeholder="e.g. Atomic Habits">
+                    </div>
+                    <div class="form-group">
+                        <label>Author</label>
+                        <input type="text" id="author" required placeholder="e.g. James Clear">
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="category" required>
+                            <option value="upskill">Upskill</option>
+                            <option value="wealth">Wealth</option>
+                            <option value="creativity">Creativity</option>
+                            <option value="kids">Kids</option>
+                            <option value="reports">Reports</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Original Price (₹)</label>
+                        <input type="number" id="originalPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Discounted Price (₹)</label>
+                        <input type="number" id="discountedPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Image URL / Path</label>
+                        <input type="text" id="image" required placeholder="images/book.jpg or https://...">
+                    </div>
+                    <div class="form-group">
+                        <label>PDF Filename</label>
+                        <input type="text" id="pdf" required placeholder="e.g. atomic_habits.pdf">
+                        <small style="color: #666;">Step 1: Upload PDF to <b>/pdfs/</b> folder. Step 2: Enter filename here.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Best Seller Rank</label>
+                        <input type="number" id="rank" placeholder="1-10">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label>Description</label>
+                    <textarea id="description" rows="4" placeholder="Enter book summary..."></textarea>
+                </div>
+                <div style="margin-top: 20px;">
+                    <button type="submit" class="btn-primary">ADD TO LIST</button>
+                    <button type="button" onclick="exportData()" class="btn-primary btn-export">COPY BOOKS.JS CODE</button>
+                    <button type="button" onclick="downloadJSON()" class="btn-primary" style="background: #17a2b8;">DOWNLOAD JSON</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="admin-card">
+            <h2>Current Catalog (<span id="bookCount">0</span> Books)</h2>
+            <div style="overflow-x: auto;">
+                <table class="book-list">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cover</th>
+                            <th>Title & Author</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>PDF Path</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookTableBody">
+                        <!-- Table rows will be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="exportArea">
+            <h2>Generated books.js Content</h2>
+            <p>Copy the code below and paste it into your <b>js/books.js</b> file to save changes.</p>
+            <div id="codeOutput" class="code-output"></div>
+        </div>
+    </div>
+
+    <script src="../js/books.js"></script>
+    <script>
+        const form = document.getElementById('bookForm');
+        const tableBody = document.getElementById('bookTableBody');
+        const bookCountSpan = document.getElementById('bookCount');
+        const codeOutput = document.getElementById('codeOutput');
+
+        // Initial render
+        renderTable();
+
+        // Auto-fill next ID
+        function updateNextId() {
+            const nextId = books.length > 0 ? Math.max(...books.map(b => b.id)) + 1 : 1;
+            document.getElementById('bookIdInput').value = nextId;
+        }
+        updateNextId();
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const newBook = {
+                id: parseInt(document.getElementById('bookIdInput').value),
+                title: document.getElementById('title').value,
+                author: document.getElementById('author').value,
+                category: document.getElementById('category').value,
+                originalPrice: parseInt(document.getElementById('originalPrice').value),
+                discountedPrice: parseInt(document.getElementById('discountedPrice').value),
+                image: document.getElementById('image').value,
+                pdf: 'pdfs/' + document.getElementById('pdf').value.replace('pdfs/', ''),
+                description: document.getElementById('description').value,
+                rank: document.getElementById('rank').value ? parseInt(document.getElementById('rank').value) : undefined
+            };
+
+            // Check if ID exists
+            const existingIndex = books.findIndex(b => b.id === newBook.id);
+            if (existingIndex !== -1) {
+                if (confirm('ID already exists. Update existing book?')) {
+                    books[existingIndex] = newBook;
+                } else {
+                    return;
+                }
+            } else {
+                books.push(newBook);
+            }
+
+            form.reset();
+            updateNextId();
+            renderTable();
+            alert('Catalog updated locally! Click COPY to get the code for books.js');
+        });
+
+        function renderTable() {
+            tableBody.innerHTML = '';
+            bookCountSpan.innerText = books.length;
+
+            books.forEach((book, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${book.id}</td>
+                    <td><img src="${book.image.startsWith('http') ? book.image : '../' + book.image}" class="book-preview-img"></td>
+                    <td>
+                        <b>${book.title}</b><br>
+                        <small>${book.author}</small>
+                    </td>
+                    <td><span class="status-badge badge-${book.category}">${book.category}</span></td>
+                    <td>₹ ${book.discountedPrice} <del style="color: #999; font-size: 11px;">₹ ${book.originalPrice}</del></td>
+                    <td><code>${book.pdf}</code></td>
+                    <td class="action-btns">
+                        <i class="fa fa-edit" style="cursor:pointer; color: #007bff;" onclick="editBook(${index})" title="Edit"></i>
+                        <i class="fa fa-trash delete-btn" onclick="deleteBook(${index})" title="Remove"></i>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function deleteBook(index) {
+            if (confirm('Are you sure you want to remove this book?')) {
+                books.splice(index, 1);
+                renderTable();
+                updateNextId();
+            }
+        }
+
+        function editBook(index) {
+            const book = books[index];
+            document.getElementById('bookIdInput').value = book.id;
+            document.getElementById('title').value = book.title;
+            document.getElementById('author').value = book.author;
+            document.getElementById('category').value = book.category;
+            document.getElementById('originalPrice').value = book.originalPrice;
+            document.getElementById('discountedPrice').value = book.discountedPrice;
+            document.getElementById('image').value = book.image;
+            document.getElementById('pdf').value = book.pdf.replace('pdfs/', '');
+            document.getElementById('description').value = book.description || '';
+            document.getElementById('rank').value = book.rank || '';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function exportData() {
+            const code = `const books = ${JSON.stringify(books, null, 4)};`;
+            codeOutput.innerText = code;
+            codeOutput.style.display = 'block';
+            document.getElementById('exportArea').scrollIntoView({ behavior: 'smooth' });
+            
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Success! The updated books.js code has been copied to your clipboard. Paste it into js/books.js');
+            });
+        }
+
+        function downloadJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(books, null, 4));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "books.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        }
+    </script>
+</body>
+</html>

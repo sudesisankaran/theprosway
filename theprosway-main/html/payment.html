@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Secure Checkout | Crossword Clone</title>
+    <link rel="icon" href="../images/Asset 39@4x.png" type="image/png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="../css/layout.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+        .checkout-container {
+            max-width: 600px;
+            margin: 60px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .checkout-container h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .qr-section {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .qr-wrapper {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border-radius: 4px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .qr-wrapper img {
+            width: 250px;
+            margin-top: -50px;
+            margin-left: -25px;
+        }
+        
+        .order-total {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body id="top">
+    <!-- Simplified Header for Checkout -->
+    <header class="main-header" style="justify-content: center; display: flex;">
+        <div class="container" style="justify-content: center;">
+            <div class="header-logo-container" style="margin: 0 auto;">
+                <a href="../index.html"><img src="../images/Asset 36@4x.png" alt="The Pros Way" style="height: 60px;"></a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <button onclick="history.back()" class="back-btn"><i class="fa fa-arrow-left"></i> Back</button>
+    </div>
+
+    <main class="container">
+        <div class="checkout-container">
+            <h1>Secure Checkout</h1>
+            
+            <div class="order-total">Total Amount Payable: <span style="color: var(--success-green);">₹ 895</span></div>
+
+            <div class="qr-section" id="qr-section">
+                <div class="qr-wrapper">
+                    <img src="../images/payment_qr.jpg" alt="Payment QR Code">
+                </div>
+                <h3 style="margin-bottom: 8px; font-size: 16px;">Scan to Pay</h3>
+                <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Use any UPI App (GPay, PhonePe, Paytm)</p>
+                <button type="button" id="confirm-btn" class="btn-primary" style="width: 100%; padding: 14px;" onclick="confirmPayment()">I HAVE PAID</button>
+            </div>
+
+            <div id="download-section" style="display: none; padding: 40px 0;">
+                <i class="fa fa-check-circle" style="font-size: 60px; color: #4CAF50; margin-bottom: 20px;"></i>
+                <h3 style="color: #4CAF50; font-size: 24px; margin-bottom: 10px; font-weight: 800;">Payment Successful!</h3>
+                <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 16px;">Thank you for your purchase. Your digital book is ready.</p>
+                
+                <div style="background: #f9f9f9; padding: 30px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 30px;">
+                    <p style="font-size: 14px; color: #555; margin-bottom: 20px; font-weight: 600;">Click the button below to save your PDF:</p>
+                    <a id="dynamic-download-link" href="../pdfs/Bookscape_Order_Receipt.pdf" download="TheProsWay_Digital_Book.pdf" class="btn-primary" style="display: block; width: 100%; padding: 18px; text-decoration: none; border-radius: 8px; font-weight: 800; font-size: 16px; box-shadow: 0 4px 15px rgba(252, 195, 2, 0.3);">
+                        <i class="fa fa-download" style="margin-right: 10px;"></i> DOWNLOAD PDF NOW
+                    </a>
+                </div>
+
+                <a href="../index.html" style="color: #666; text-decoration: none; font-size: 13px; font-weight: 600;">
+                    <i class="fa fa-arrow-left"></i> Return to Homepage
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function confirmPayment() {
+            const btn = document.getElementById('confirm-btn');
+            const downloadSection = document.getElementById('download-section');
+            const qrSection = document.getElementById('qr-section');
+            const downloadLink = document.getElementById('dynamic-download-link');
+            
+            // Get PDF from cart
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length > 0) {
+                const product = cart[0];
+                if (product.pdf) {
+                    downloadLink.href = '../pdfs/' + product.pdf;
+                    downloadLink.download = product.title.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
+                }
+            }
+
+            btn.innerHTML = 'Verifying...';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+                qrSection.style.display = 'none';
+                downloadSection.style.display = 'block';
+                // Clear cart after successful payment
+                localStorage.removeItem('cart');
+            }, 2000);
+        }
+    </script>
+
+        
+    <script>
+        // Mobile Navigation Toggle
+        function toggleMobileNav() {
+            const nav = document.querySelector('.inline-nav');
+            if(nav) {
+                nav.classList.toggle('active');
+            }
+        }
+    </script>
+<script src="../js/cart-logic.js"></script>
+
+
+<script>
+    function startAnnouncementSlider() {
+        const slides = document.querySelectorAll('.announcement-slider span');
+        let current = 0;
+        if (slides.length === 0) return;
+        
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 4000);
+    }
+    document.addEventListener('DOMContentLoaded', startAnnouncementSlider);
+</script>
+</body>
+
+</html>

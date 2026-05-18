@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Buy Books Online at Best Prices in India | Crossword Clone</title>
+    <link rel="icon" href="images/Asset 39@4x.png" type="image/png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
+    <script src="js/pdf-preview.js" defer></script>
+</head>
+
+<body id="top">
+    <!-- Top Announcement Bar -->
+    
+    <div class="announcement-bar">
+        <div class="announcement-slider">
+            <span class="active">Extra 10% Off on Shopping above ₹1,499.</span>
+            <span>Free Delivery on all prepaid orders!</span>
+            <span>Buy 2 Get 1 Free on all Kids' Books.</span>
+            <span>New Reports Collection is now Live!</span>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="mobile-menu-toggle" onclick="toggleMobileNav()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="header-logo-container">
+                <a href="index.html"><img src="images/Asset 36@4x.png" alt="The Pros Way" style="height: 60px;"></a>
+            </div>
+            
+            <nav class="inline-nav">
+                <ul class="inline-menu-list">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn" onclick="toggleCategories(event)">Categories <i class="fa fa-angle-down" style="margin-left: 5px; font-size: 12px;"></i></a>
+                        <div id="categoriesDropdown" class="dropdown-content">
+                            <a href="html/upskill.html">Upskill</a>
+                            <a href="html/wealth.html">Wealth</a>
+                            <a href="html/creativity.html">Style & Design</a>
+                            <a href="html/kids.html">Kids</a>
+                            <a href="html/reports.html">Reports</a>
+                        </div>
+                    </li>
+                    <li><a href="html/about.html">About Us</a></li>
+                    <li><a href="html/whylearnfromus.html">Why Us?</a></li>
+                    <li><a href="html/authors.html">Authors</a></li>
+                    <li><a href="html/contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <script src="js/navbar.js"></script>
+
+            <form class="header-search" onsubmit="event.preventDefault(); performSearch();">
+                <input type="text" id="searchInput" placeholder="Search For ISBN, Book Name, Author">
+                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+            </form>
+            
+            <div class="header-icons">
+                <a href="html/login.html" title="Login"><i class="fa fa-user-o"></i></a>
+                <a href="html/bookshelf.html" title="Bookshelf"><i class="fa fa-bookmark-o"></i></a>
+                
+                <a href="html/cart.html" class="cart-icon-container">
+                    <i class="fa fa-shopping-bag"></i>
+                    <span class="cart-count">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <!-- Hero Section with White Background Break -->
+        <section class="hero-section">
+            <!-- Hero Banner Slider -->
+            <div class="hero-slider-container">
+                <div class="hero-slider">
+                <div class="hero-slide active">
+                    <img src="images/home/download (1).jpg" alt="Reading Fest Sale">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/home/download (2).jpg" alt="Back to School">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/home/download (3).jpg" alt="Loope Offer">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/home/download (4).jpg" alt="50% Off Summer Sale">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/home/download (5).jpg" alt="New Arrivals">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/home/download.jpg" alt="Premium Stationery">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/home/images (1).jpg" alt="Children's Books">
+                </div>
+                <div class="hero-slide">
+                    <img src="images/home/images (2).jpg" alt="Top Bestsellers">
+                </div>
+            </div> <!-- .hero-slider end -->
+            
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+            </div>
+        </div> <!-- .hero-slider-container end -->
+    </section>
+
+        <div class="container">
+
+
+
+
+            <!-- Best Sellers Section -->
+            <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0;">Best Sellers</h2>
+                <a href="html/bestsellers.html" class="btn-secondary" style="font-size: 11px; padding: 6px 15px;">SHOW ALL</a>
+            </div>
+            <div class="scroll-container books-dynamic-container" data-category="bestsellers" data-limit="20">
+                <!-- Best Sellers will be rendered here dynamically -->
+            </div>
+
+            <!-- Upskill Section -->
+            <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0;">Upskill Your Career</h2>
+                <a href="html/upskill.html" class="btn-secondary" style="font-size: 11px; padding: 6px 15px;">SHOW ALL</a>
+            </div>
+            <div class="scroll-container books-dynamic-container" data-category="upskill" data-limit="20">
+                <!-- Upskill books will be rendered here dynamically -->
+            </div>
+            <!-- Wealth Section -->
+            <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0;">Build Your Wealth</h2>
+                <a href="html/wealth.html" class="btn-secondary" style="font-size: 11px; padding: 6px 15px;">SHOW ALL</a>
+            </div>
+            <div class="scroll-container books-dynamic-container" data-category="wealth" data-limit="20">
+                <!-- Wealth books will be rendered here dynamically -->
+            </div>
+
+            <!-- Style & Design Section -->
+            <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0;">Style & Design</h2>
+                <a href="html/creativity.html" class="btn-secondary" style="font-size: 11px; padding: 6px 15px;">SHOW ALL</a>
+            </div>
+            <div class="scroll-container books-dynamic-container" data-category="creativity" data-limit="20">
+                <!-- Style & Design books will be rendered here dynamically -->
+            </div>
+
+            <!-- Kids Section -->
+            <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0;">Kids' Corner</h2>
+                <a href="html/kids.html" class="btn-secondary" style="font-size: 11px; padding: 6px 15px;">SHOW ALL</a>
+            </div>
+            <div class="scroll-container books-dynamic-container" data-category="kids" data-limit="20">
+                <!-- Kids' books will be rendered here dynamically -->
+            </div>
+
+            <!-- Reports Section -->
+            <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0;">Latest Reports</h2>
+                <a href="html/reports.html" class="btn-secondary" style="font-size: 11px; padding: 6px 15px;">SHOW ALL</a>
+            </div>
+            <div class="scroll-container books-dynamic-container" data-category="reports" data-limit="20">
+                <!-- Reports will be rendered here dynamically -->
+            </div>
+
+            <!-- Coming Soon Section -->
+            <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="section-title" style="margin-bottom: 0;">Coming Soon</h2>
+                <a href="html/soon.html" class="btn-secondary" style="font-size: 11px; padding: 6px 15px;">SHOW ALL</a>
+            </div>
+            <div class="scroll-container books-dynamic-container" data-category="soon" data-limit="20">
+                <!-- Coming Soon books will be rendered here dynamically -->
+            </div>
+            
+            <hr style="border: 0; height: 1px; background: #eee; margin: 60px 0;">
+
+            <!-- What Our Readers Say Section -->
+            <div class="section-header" style="margin-top: 60px; margin-bottom: 30px;">
+                <h2 class="section-title">What Our Readers Say</h2>
+            </div>
+            <div class="review-container">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </div>
+                    <p class="review-text">"The quality of knowledge provided by The Pros Way is unmatched. Every book has transformed my career."</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">JD</div>
+                        <div>
+                            <h4 class="reviewer-name">John Doe</h4>
+                            <p class="reviewer-status"><i class="fa fa-check-circle"></i> Verified Reader</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </div>
+                    <p class="review-text">"The Wealth collection helped me start my investment journey. Truly life-changing resources!"</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">SA</div>
+                        <div>
+                            <h4 class="reviewer-name">Sarah A.</h4>
+                            <p class="reviewer-status"><i class="fa fa-check-circle"></i> Verified Reader</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
+                    </div>
+                    <p class="review-text">"Loving the new micro-grid design. It's so easy to find exactly what I need. Highly recommend!"</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">MK</div>
+                        <div>
+                            <h4 class="reviewer-name">Michael K.</h4>
+                            <p class="reviewer-status"><i class="fa fa-check-circle"></i> Verified Reader</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </div>
+                    <p class="review-text">"Best customer support I have ever experienced. Fast and helpful response every time."</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">RP</div>
+                        <div>
+                            <h4 class="reviewer-name">Raj P.</h4>
+                            <p class="reviewer-status"><i class="fa fa-check-circle"></i> Verified Reader</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Exact Crossword Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-info">
+                    <img src="images/Asset 36@4x.png" alt="The Pros Way" style="height: 40px; margin-bottom: 20px;">
+                    <p>The Pros Way draws book lovers of all ages into a community where they can discover, share, and expand their knowledge through reading.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="html/upskill.html">Upskill</a></li>
+                        <li><a href="html/wealth.html">Wealth</a></li>
+                        <li><a href="html/creativity.html">Style & Design</a></li>
+                        <li><a href="html/kids.html">Kids</a></li>
+                        <li><a href="html/reports.html">Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="html/about.html">About Us</a></li>
+                        <li><a href="html/whylearnfromus.html">Why Us?</a></li>
+                        <li><a href="html/authors.html">Authors</a></li>
+                        <li><a href="html/contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Store & Support</h4>
+                    <ul>
+                        <li><a href="html/contact.html">Contact Us</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                        <li><a href="html/cart.html">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="popular-searches">
+                <h4>Popular Searches</h4>
+                <div class="search-tags">
+                    <a href="upskill.html">Upskill Your Career</a>
+                    <a href="wealth.html">Wealth Building</a>
+                    <a href="creativity.html">Design Masterclass</a>
+                    <a href="kids.html">Kids' Stories</a>
+                    <a href="reports.html">Market Reports 2026</a>
+                    <a href="soon.html">Upcoming Releases</a>
+                    <a href="wealth.html">Passive Income</a>
+                    <a href="upskill.html">Leadership Skills</a>
+                    <a href="creativity.html">Creative Thinking</a>
+                    <a href="bestsellers.html">Best Sellers</a>
+</div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 The Pros Way, All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.dot');
+        const slider = document.querySelector('.hero-slider');
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function moveSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+            updateSlider();
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index;
+            updateSlider();
+        }
+
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+
+        // Search Functionality
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.product-card');
+            
+            cards.forEach(card => {
+                const titleElement = card.querySelector('.product-title');
+                const authorElement = card.querySelector('.product-author');
+                
+                // If the card has a title and author (some might not depending on layout)
+                if (titleElement && authorElement) {
+                    const title = titleElement.innerText.toLowerCase();
+                    const author = authorElement.innerText.toLowerCase();
+                    
+                    if (title.includes(query) || author.includes(query) || query === '') {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Scroll down slightly so the user sees the filtered results
+            if(query !== '') {
+                document.querySelector('.section-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+
+        
+<script src="js/cart-logic.js"></script>
+
+
+<script>
+    function startAnnouncementSlider() {
+        const slides = document.querySelectorAll('.announcement-slider span');
+        let current = 0;
+        if (slides.length === 0) return;
+        
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 4000);
+    }
+    document.addEventListener('DOMContentLoaded', startAnnouncementSlider);
+</script>
+    <script src="js/books.js"></script>
+    <script src="js/render-books.js"></script>
+    <script src="js/bookshelf-logic.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Your Bookshelf | The Pros Way</title>
+    <link rel="icon" href="../images/Asset 39@4x.png" type="image/png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="../css/layout.css" rel="stylesheet" type="text/css" media="all">
+</head>
+
+
+<body id="top">
+    
+    <!-- Top Announcement Bar -->
+    
+    <div class="announcement-bar">
+        <div class="announcement-slider">
+            <span class="active">Extra 10% Off on Shopping above ₹1,499.</span>
+            <span>Free Delivery on all prepaid orders!</span>
+            <span>Buy 2 Get 1 Free on all Kids' Books.</span>
+            <span>New Reports Collection is now Live!</span>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+        <header class="main-header">
+        <div class="container">
+            <div class="mobile-menu-toggle" onclick="toggleMobileNav()">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="header-logo-container">
+                <a href="../index.html"><img src="../images/Asset 36@4x.png" alt="The Pros Way" style="height: 60px;"></a>
+            </div>
+            
+            <nav class="inline-nav">
+                <ul class="inline-menu-list">
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropbtn" onclick="toggleCategories(event)">Categories <i class="fa fa-angle-down" style="margin-left: 5px; font-size: 12px;"></i></a>
+                        <div id="categoriesDropdown" class="dropdown-content">
+                            <a href="upskill.html">Upskill</a>
+                            <a href="wealth.html">Wealth</a>
+                            <a href="creativity.html">Style & Design</a>
+                            <a href="kids.html">Kids</a>
+                            <a href="reports.html">Reports</a>
+                        </div>
+                    </li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="whylearnfromus.html">Why Us?</a></li>
+                    <li><a href="authors.html">Authors</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <script src="../js/navbar.js"></script>
+
+            <form class="header-search" onsubmit="event.preventDefault(); performSearch();">
+                <input type="text" id="searchInput" placeholder="Search For ISBN, Book Name, Author">
+                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+            </form>
+            
+            <div class="header-icons">
+                <a href="login.html" title="Login"><i class="fa fa-user-o"></i></a>
+                
+                <a href="#" title="Bookshelf"><i class="fa fa-bookmark-o"></i></a>
+                
+                <a href="cart.html" class="cart-icon-container">
+                    <i class="fa fa-shopping-bag"></i>
+                    <span class="cart-count">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <button onclick="history.back()" class="back-btn"><i class="fa fa-arrow-left"></i> Back</button>
+    </div>
+
+    
+
+    
+    <main class="container">
+        <h2 class="section-title" style="text-align: left; margin: 40px 0;">My Bookshelf</h2>
+        <div id="bookshelf-empty" style="text-align: center; padding: 60px 0; display: none;">
+            <i class="fa fa-bookmark-o" style="font-size: 60px; color: #ddd; margin-bottom: 20px;"></i>
+            <p style="font-size: 18px; color: #666;">Your bookshelf is currently empty.</p>
+            <a href="../index.html" class="btn-primary" style="display: inline-block; margin-top: 20px; padding: 12px 30px; text-decoration: none; border-radius: 4px;">Browse Books</a>
+        </div>
+        <div id="bookshelf-grid" class="category-grid">
+            <!-- Dynamic Content populated by bookshelf-logic.js -->
+        </div>
+    </main>
+    <!-- Exact Crossword Footer -->
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-info">
+                    <img src="../images/Asset 36@4x.png" alt="The Pros Way" style="height: 40px; margin-bottom: 20px;">
+                    <p>The Pros Way draws book lovers of all ages into a community where they can discover, share, and expand their knowledge through reading.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="upskill.html">Upskill</a></li>
+                        <li><a href="wealth.html">Wealth</a></li>
+                        <li><a href="creativity.html">Style & Design</a></li>
+                        <li><a href="kids.html">Kids</a></li>
+                        <li><a href="reports.html">Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="whylearnfromus.html">Why Us?</a></li>
+                        <li><a href="authors.html">Authors</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Store & Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                        <li><a href="cart.html">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="popular-searches">
+                <h4>Popular Searches</h4>
+                <div class="search-tags">
+                    <a href="upskill.html">Upskill Your Career</a>
+                    <a href="wealth.html">Wealth Building</a>
+                    <a href="creativity.html">Design Masterclass</a>
+                    <a href="kids.html">Kids' Stories</a>
+                    <a href="reports.html">Market Reports 2026</a>
+                    <a href="soon.html">Upcoming Releases</a>
+                    <a href="wealth.html">Passive Income</a>
+                    <a href="upskill.html">Leadership Skills</a>
+                    <a href="creativity.html">Creative Thinking</a>
+                    <a href="bestsellers.html">Best Sellers</a>
+</div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 The Pros Way, All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+        
+<script src="../js/cart-logic.js"></script>
+
+
+<script>
+    function startAnnouncementSlider() {
+        const slides = document.querySelectorAll('.announcement-slider span');
+        let current = 0;
+        if (slides.length === 0) return;
+        
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 4000);
+    }
+    document.addEventListener('DOMContentLoaded', startAnnouncementSlider);
+</script>
+<script src="../js/bookshelf-logic.js"></script>
+</body>
+
+</html>
